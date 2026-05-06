@@ -8,7 +8,7 @@ description: |
   Deep Q-Network agents — achieving up to 82.7% energy savings while maintaining
   competitive win rates in Tic-Tac-Toe and Connect 4.
 tags:
-  - Neuromorphic
+  - Neuromorphic Computing
   - Spiking Neural Networks
   - Reinforcement Learning
   - PyTorch
@@ -33,21 +33,7 @@ The core research question: can we replace the standard deep neural networks ins
 
 ## Key Results
 
-### Tic-Tac-Toe
-| Encoding | Win+Draw Rate | Energy Savings | Sparsity |
-|---|---|---|---|
-| **SDR** | **100%** | — | — |
-| **TTFS** | 99.4% | **82.7%** | **88.41%** |
-| Population | competitive | — | — |
-
-### Connect 4
-| Encoding | Win+Draw Rate | Energy Savings | Sparsity |
-|---|---|---|---|
-| **Population** | **92.80%** | — | — |
-| **TTFS** | competitive | **80.5%** | **70.44%** |
-| ROC | 91.8% | — | — |
-
-**Key finding:** TTFS encoding consistently delivered the optimal trade-off between game performance and energy consumption across both environments — making it the most suitable encoding for resource-constrained neuromorphic deployments. All six encoding methods maintained competitive win rates against baselines, validating that SNNs can match DQN performance while delivering substantial energy benefits.
+Rank order encoding consistently delivered the optimal trade-off between game performance and energy consumption across both environments — making it the most suitable encoding for resource-constrained neuromorphic deployments. All six encoding methods maintained competitive win rates against baselines, validating that SNNs can match DQN performance while delivering substantial energy benefits.
 
 ## Tech Stack
 
