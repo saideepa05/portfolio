@@ -16,6 +16,7 @@ const recentPosts = (await getCollection('blog'))
 const skills = [
 	{
 		group: 'AI Systems & Frameworks',
+		color: '#7c3aed',
 		items: [
 			'LLMs, RAG Pipelines, Agentic AI',
 			'Multi-Agent Systems',
@@ -26,10 +27,12 @@ const skills = [
 		],
 	},
 	{
-		group: 'Neuromorphic & ML Research',
+		group: 'Neuromorphic & RL Research',
+		color: '#2563eb',
 		items: [
+			'Reinforcement Learning',
 			'Spiking Neural Networks (snnTorch, PyTorch)',
-			'Deep Reinforcement Learning (DQN, Q-learning)',
+			'Deep Reinforcement Learning',
 			'Surrogate Gradient Learning',
 			'Transformers, CNNs, RNNs, LSTMs',
 			'Spike Encodings & Energy Trade-offs',
@@ -37,22 +40,13 @@ const skills = [
 	},
 	{
 		group: 'Engineering & Deployment',
+		color: '#0d9488',
 		items: [
 			'Python, Java, SQL, C++',
 			'FastAPI, REST APIs, Spring Boot',
 			'Docker, CI/CD, GitHub Actions',
-			'AWS, Distributed Systems, Microservices',
-			'ETL Pipelines, Modular Code Design',
-		],
-	},
-	{
-		group: 'Production & Reliability',
-		items: [
-			'Model Monitoring & Evaluation',
-			'Pipeline Debugging & Optimization',
-			'Failure Mode Analysis',
-			'Performance Tuning & Scalability',
-			'Authentication & Security Integrations',
+			'AWS',
+			'ETL Pipelines',
 		],
 	},
 ];
@@ -177,9 +171,11 @@ const publications = [
 							{skills.map((group) => (
 								<div class="skill-group">
 									<h3 class="skill-group-title">{group.group}</h3>
-									<ul>
-										{group.items.map((item) => <li>{item}</li>)}
-									</ul>
+									<div class="skill-pills">
+										{group.items.map((item) => (
+											<span class="skill-pill" style={{ backgroundColor: group.color }}>{item}</span>
+										))}
+									</div>
 								</div>
 							))}
 						</div>
@@ -420,24 +416,33 @@ const publications = [
 		background: var(--gradient-subtle);
 		border: 1px solid var(--gray-800);
 		border-radius: 1rem;
-		padding: 1.1rem 1.25rem;
+		padding: 1.5rem 1.75rem;
 	}
 
 	.skill-group-title {
-		font-size: 0.7rem;
+		font-size: 0.75rem;
 		font-weight: 700;
 		color: var(--accent-regular);
 		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		margin: 0 0 0.6rem;
+		letter-spacing: 0.06em;
+		margin: 0 0 0.9rem;
 	}
 
-	.skill-group ul {
-		margin: 0;
-		padding: 0 0 0 1rem;
-		color: var(--gray-300);
+	.skill-pills {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.skill-pill {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.4rem 1rem;
+		border-radius: 999rem;
+		color: #fff;
 		font-size: var(--text-sm);
-		line-height: 1.8;
+		font-weight: 500;
+		line-height: 1.2;
 	}
 
 	/* Contact */
