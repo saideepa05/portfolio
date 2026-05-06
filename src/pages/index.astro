@@ -234,10 +234,6 @@ const publications = [
 					<p>Thoughts on AI engineering, neuromorphic computing, and building things that work in production.</p>
 				</header>
 
-				<div class="gallery blog-gallery">
-					{recentPosts.map((post) => <BlogPreview post={post} />)}
-				</div>
-
 				<div class="gallery centered-cta">
 					<CallToAction href="/blog/">
 						All Posts
@@ -537,6 +533,7 @@ const publications = [
 		.centered-cta {
 			display: flex;
 			justify-content: center;
+			align-items: center;
 		}
 	}
 
