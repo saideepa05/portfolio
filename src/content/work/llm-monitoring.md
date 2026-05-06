@@ -23,15 +23,15 @@ The system separates the LLM into measurable stages (retrieval vs. generation), 
 
 ## What I Built
 
-- **RAG support pipeline** (`pipeline.py`) — LangChain LCEL chain over a FAISS vector store indexing 5 Amazon guideline documents (product listing, returns, payments, taxes, customer service), chunked with source traceability. Top-3 retrieval feeding a GPT model with strict grounding instructions
-- **Real-time monitoring dashboard** (`app.py`) — Streamlit interface with three views:
+- **RAG support pipeline** — LangChain LCEL chain over a FAISS vector store indexing 5 Amazon guideline documents (product listing, returns, payments, taxes, customer service), chunked with source traceability. Top-3 retrieval feeding a GPT model with strict grounding instructions
+- **Real-time monitoring dashboard** — Streamlit interface with three views:
   - **Dashboard** — live KPIs (support latency, success rate, guideline accuracy score, total queries), latency distribution histogram, query status pie chart, and an expandable audit trail with per-request trace logs
   - **Live Support Agent** — interactive query interface with example questions and custom input
   - **Guideline Benchmark** — one-click offline evaluation against the full validation set
-- **Automated evaluator** (`evaluator.py`) — OpenAI embedding-based cosine similarity scoring for two dimensions: *response similarity* to expected answers (pass threshold: ≥ 0.85) and *groundedness* (response vs. retrieved context), catching hallucinations not grounded in the source documents
-- **Structured audit logger** (`logger.py`) — JSON-based persistent log capturing every request: `request_id`, `timestamp`, `query`, `retrieved context`, `response`, `model`, `retrieval_latency`, `generation_latency`, `total_latency`, `status`, and human `feedback`
-- **Metrics manager** (`metrics.py`) — computes performance metrics (avg / P95 / max latency, retrieval vs. generation breakdown), reliability metrics (success rate, failure count), and quality metrics (aggregated human feedback scores)
-- **Offline benchmark runner** (`run_eval.py`) — batch evaluation pipeline against a CSV validation set, logging similarity and groundedness scores for every guideline question
+- **Automated evaluator** — OpenAI embedding-based cosine similarity scoring for two dimensions: *response similarity* to expected answers (pass threshold: ≥ 0.85) and *groundedness* (response vs. retrieved context), catching hallucinations not grounded in the source documents
+- **Structured audit logger** — JSON-based persistent log capturing every request: `request_id`, `timestamp`, `query`, `retrieved context`, `response`, `model`, `retrieval_latency`, `generation_latency`, `total_latency`, `status`, and human `feedback`
+- **Metrics manager** — computes performance metrics (avg / P95 / max latency, retrieval vs. generation breakdown), reliability metrics (success rate, failure count), and quality metrics (aggregated human feedback scores)
+- **Offline benchmark runner** — batch evaluation pipeline against a CSV validation set, logging similarity and groundedness scores for every guideline question
 
 ## Tech Stack
 
