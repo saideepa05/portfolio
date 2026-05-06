@@ -183,13 +183,13 @@ const publications = [
 				</section>
 			</div>
 
-			<section class="section with-background with-cta">
+			<section class="section with-background">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>My Projects</h3>
 					<p>Production AI systems, research projects, and published work — each built to solve a real problem.</p>
 				</header>
 
-				<div class="cta">
+				<div class="gallery centered-cta">
 					<CallToAction href="/work/">
 						View All
 						<Icon icon="arrow-right" size="1.2em" />
@@ -228,9 +228,9 @@ const publications = [
 				</div>
 			</section>
 
-			<section class="section with-background blog-section with-cta">
+			<section class="section with-background blog-section">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>From the Blog</h3>
+					<h3>Blog Posts</h3>
 					<p>Thoughts on AI engineering, neuromorphic computing, and building things that work in production.</p>
 				</header>
 
@@ -238,7 +238,7 @@ const publications = [
 					{recentPosts.map((post) => <BlogPreview post={post} />)}
 				</div>
 
-				<div class="cta">
+				<div class="gallery centered-cta">
 					<CallToAction href="/blog/">
 						All Posts
 						<Icon icon="arrow-right" size="1.2em" />
@@ -521,10 +521,6 @@ const publications = [
 			gap: 5rem;
 		}
 
-		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
-		}
-
 		.section-header {
 			grid-area: header;
 			font-size: var(--text-lg);
@@ -534,17 +530,13 @@ const publications = [
 			font-size: var(--text-4xl);
 		}
 
-		.with-cta .section-header {
-			justify-self: flex-start;
-			text-align: left;
-		}
-
 		.gallery {
 			grid-area: gallery;
 		}
 
-		.cta {
-			grid-area: cta;
+		.centered-cta {
+			display: flex;
+			justify-content: center;
 		}
 	}
 
@@ -619,10 +611,6 @@ const publications = [
 
 		.blog-section {
 			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
-		}
-
-		.blog-section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
 		}
 	}
 </style>
