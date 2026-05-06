@@ -122,7 +122,7 @@ const publications = [
 					</Grid>
 				</div>
 			</section>
-			<section class="section with-background blog-section">
+			<section class="section with-background blog-section with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>From the Blog</h3>
 					<p>Thoughts on AI engineering, neuromorphic computing, and building things that work in production.</p>
@@ -322,14 +322,6 @@ const publications = [
 
 	/* ====================================================== */
 
-	.blog-section {
-		grid-template-areas: 'header header header header' 'gallery gallery gallery gallery' !important;
-	}
-
-	.blog-section.with-cta {
-		grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery' !important;
-	}
-
 	.blog-gallery {
 		display: grid;
 		gap: 1rem;
@@ -342,8 +334,12 @@ const publications = [
 			gap: 1.5rem;
 		}
 
+		.blog-section {
+			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
+		}
+
 		.blog-section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery' !important;
+			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
 		}
 	}
 </style>
