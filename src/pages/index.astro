@@ -366,25 +366,19 @@ const publications = [
 	}
 
 	@media (min-width: 50em) {
-		.about-wrapper {
+		.about-section {
 			display: grid;
 			grid-template-columns: 1fr 60% 1fr;
-			row-gap: 3.5rem;
-		}
-
-		.about-section {
-			display: contents;
-			font-size: var(--text-lg);
+			align-items: start;
 		}
 
 		.about-section-title {
-			grid-column-start: 1;
-			font-size: var(--text-xl);
+			grid-column: 1;
 			padding-top: 0.2rem;
 		}
 
 		.about-content {
-			grid-column: 2 / 4;
+			grid-column: 2;
 		}
 	}
 
