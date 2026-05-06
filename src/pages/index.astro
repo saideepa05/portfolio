@@ -1,8 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-// Component Imports
+import BlogPreview from '../components/BlogPreview.astro';
 import CallToAction from '../components/CallToAction.astro';
-// Page section components
 import ContactCTA from '../components/ContactCTA.astro';
 import Grid from '../components/Grid.astro';
 import Hero from '../components/Hero.astro';
@@ -10,16 +9,33 @@ import Icon from '../components/Icon.astro';
 import Pill from '../components/Pill.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Skills from '../components/Skills.astro';
-// Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Content Fetching: List four most recent work projects
 const projects = (await getCollection('work'))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.slice(0, 4);
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+const recentPosts = (await getCollection('blog'))
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+	.slice(0, 3);
+
+const publications = [
+	{
+		venue: 'IEEE Access · 2026',
+		title: 'Exploring Neuromorphic Computing for Reinforcement Learning: A Survey and Review',
+		href: 'https://ieeexplore.ieee.org/abstract/document/11353437',
+	},
+	{
+		venue: 'IOP Neuromorphic Computing & Engineering · Under Review',
+		title: 'Deep Spiking Q-Networks for Turn-Based Game Environments: Encoding Choices and Energy Trade-offs',
+		href: null,
+	},
+	{
+		venue: 'IEEE Conference on Games (CoG) · 2025',
+		title: 'RL- and LLM-Based AI Solvers for Wordle and Fibble',
+		href: 'https://ieeexplore.ieee.org/abstract/document/11114257',
+	},
+];
 ---
 
 <BaseLayout>
@@ -27,19 +43,19 @@ const projects = (await getCollection('work'))
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero
-					title="Hello, my name is Jeanine White"
-					tagline="I am a Creative Developer who is currently based in Portland, Oregon."
+					title="Hi, I'm Sai Deepa Kadaru"
+					tagline="AI Engineer & Software Developer building production-grade LLM systems, RAG pipelines, and agentic AI — with research roots in neuromorphic computing and spiking neural networks."
 					align="start"
 				>
 					<div class="roles">
-						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
-						<Pill><Icon icon="microphone-stage" size="1.33em" /> Speaker</Pill>
-						<Pill><Icon icon="pencil-line" size="1.33em" /> Writer</Pill>
+						<Pill><Icon icon="code" size="1.33em" /> AI Engineer</Pill>
+						<Pill><Icon icon="pencil-line" size="1.33em" /> Researcher</Pill>
+						<Pill><Icon icon="trophy" size="1.33em" /> Published Author</Pill>
 					</div>
 				</Hero>
 
 				<img
-					alt="Jeanine White smiling in a red plaid shirt and tortoise shell glasses"
+					alt="Sai Deepa Kadaru profile photo"
 					width="480"
 					height="620"
 					src="/assets/portrait.jpg"
@@ -53,7 +69,7 @@ const projects = (await getCollection('work'))
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Selected Work</h3>
-					<p>Take a look below at some of my featured work for clients from the past few years.</p>
+					<p>Production AI systems, research projects, and published work — each built to solve a real problem.</p>
 				</header>
 
 				<div class="gallery">
@@ -78,23 +94,49 @@ const projects = (await getCollection('work'))
 
 			<section class="section with-background bg-variant">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Mentions</h3>
+					<h3>Publications</h3>
 					<p>
-						I have been fortunate enough to receive praise for my work in several publications. Take
-						a look below to learn more.
+						Peer-reviewed research in neuromorphic computing, reinforcement learning, and LLM-based game solvers.
 					</p>
 				</header>
 
 				<div class="gallery">
 					<Grid variant="small">
 						{
-							['Medium', 'BuzzFeed', 'The Next Web', 'awwwards.', 'TechCrunch'].map((brand) => (
+							publications.map((pub) => (
 								<li class="mention-card">
-									<p>{brand}</p>
+									{pub.href ? (
+										<a href={pub.href} target="_blank" rel="noopener noreferrer" class="pub-link">
+											<p class="pub-venue">{pub.venue}</p>
+											<p class="pub-title">{pub.title}</p>
+										</a>
+									) : (
+										<div class="pub-link">
+											<p class="pub-venue">{pub.venue}</p>
+											<p class="pub-title">{pub.title}</p>
+										</div>
+									)}
 								</li>
 							))
 						}
 					</Grid>
+				</div>
+			</section>
+			<section class="section with-background blog-section">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>From the Blog</h3>
+					<p>Thoughts on AI engineering, neuromorphic computing, and building things that work in production.</p>
+				</header>
+
+				<div class="gallery blog-gallery">
+					{recentPosts.map((post) => <BlogPreview post={post} />)}
+				</div>
+
+				<div class="cta">
+					<CallToAction href="/blog/">
+						All Posts
+						<Icon icon="arrow-right" size="1.2em" />
+					</CallToAction>
 				</div>
 			</section>
 		</main>
@@ -229,21 +271,79 @@ const projects = (await getCollection('work'))
 
 	.mention-card {
 		display: flex;
-		height: 7rem;
+		min-height: 7rem;
 		justify-content: center;
-		align-items: center;
-		text-align: center;
+		align-items: stretch;
+		text-align: left;
 		border: 1px solid var(--gray-800);
 		border-radius: 1.5rem;
 		color: var(--gray-300);
 		background: var(--gradient-subtle);
 		box-shadow: var(--shadow-sm);
+		overflow: hidden;
+	}
+
+	.pub-link {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		padding: 1.25rem 1.5rem;
+		text-decoration: none;
+		color: inherit;
+		width: 100%;
+		transition: background-color var(--theme-transition);
+	}
+
+	a.pub-link:hover {
+		background-color: var(--accent-subtle-overlay);
+	}
+
+	.pub-venue {
+		font-size: 0.7rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--accent-regular);
+		margin: 0;
+	}
+
+	.pub-title {
+		font-size: var(--text-sm);
+		line-height: 1.4;
+		margin: 0;
 	}
 
 	@media (min-width: 50em) {
 		.mention-card {
 			border-radius: 1.5rem;
-			height: 9.5rem;
+			min-height: 9.5rem;
+		}
+	}
+
+	/* ====================================================== */
+
+	.blog-section {
+		grid-template-areas: 'header header header header' 'gallery gallery gallery gallery' !important;
+	}
+
+	.blog-section.with-cta {
+		grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery' !important;
+	}
+
+	.blog-gallery {
+		display: grid;
+		gap: 1rem;
+		grid-column: 1 / -1;
+	}
+
+	@media (min-width: 50em) {
+		.blog-gallery {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1.5rem;
+		}
+
+		.blog-section.with-cta {
+			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery' !important;
 		}
 	}
 </style>

@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPreview from '../components/BlogPreview.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+---
+
+<BaseLayout
+	title="Blog | Sai Deepa Kadaru"
+	description="Writing about AI engineering, neuromorphic computing, and the gap between research and production."
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero
+				title="Blog"
+				tagline="Writing about AI engineering, neuromorphic computing, and the gap between research and production."
+				align="start"
+			/>
+			<div class="posts">
+				{posts.map((post) => <BlogPreview post={post} />)}
+			</div>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.posts {
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 50em) {
+		.posts {
+			gap: 2rem;
+		}
+	}
+</style>

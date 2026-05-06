@@ -2,20 +2,82 @@
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const skills = [
+	{
+		group: 'AI Systems & Frameworks',
+		items: [
+			'LLMs, RAG Pipelines, Agentic AI',
+			'Multi-Agent Systems',
+			'LangChain, LlamaIndex, Hugging Face',
+			'Vector Databases (FAISS, Pinecone)',
+			'OpenAI API, Embedding Models',
+			'Prompt Engineering',
+		],
+	},
+	{
+		group: 'Neuromorphic & ML Research',
+		items: [
+			'Spiking Neural Networks (snnTorch, PyTorch)',
+			'Deep Reinforcement Learning (DQN, Q-learning)',
+			'Surrogate Gradient Learning',
+			'Transformers, CNNs, RNNs, LSTMs',
+			'Spike Encodings & Energy Trade-offs',
+		],
+	},
+	{
+		group: 'Engineering & Deployment',
+		items: [
+			'Python, Java, SQL, C++',
+			'FastAPI, REST APIs, Spring Boot',
+			'Docker, CI/CD, GitHub Actions',
+			'AWS, Distributed Systems, Microservices',
+			'ETL Pipelines, Modular Code Design',
+		],
+	},
+	{
+		group: 'Production & Reliability',
+		items: [
+			'Model Monitoring & Evaluation',
+			'Pipeline Debugging & Optimization',
+			'Failure Mode Analysis',
+			'Performance Tuning & Scalability',
+			'Authentication & Security Integrations',
+		],
+	},
+];
+
+const publications = [
+	{
+		venue: 'IEEE Access · 2026',
+		title: 'Exploring Neuromorphic Computing for Reinforcement Learning: A Survey and Review',
+		href: 'https://ieeexplore.ieee.org/abstract/document/11353437',
+	},
+	{
+		venue: 'IOP Neuromorphic Computing & Engineering · Under Review',
+		title: 'Deep Spiking Q-Networks for Turn-Based Game Environments: Encoding Choices and Energy Trade-offs',
+		href: null,
+	},
+	{
+		venue: 'IEEE Conference on Games (CoG) · 2025',
+		title: 'RL- and LLM-Based AI Solvers for Wordle and Fibble',
+		href: 'https://ieeexplore.ieee.org/abstract/document/11114257',
+	},
+];
 ---
 
-<BaseLayout title="About | Jeanine White" description="About Jeanine White Lorem Ipsum">
+<BaseLayout title="About | Sai Deepa Kadaru" description="AI Engineer & researcher building production LLM systems and studying neuromorphic computing at Ohio University.">
 	<div class="stack gap-20">
 		<main class="wrapper about">
 			<Hero
 				title="About"
-				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
+				tagline="AI engineer by day, neuromorphic computing researcher by thesis. Here's a bit more about me."
 			>
 				<img
 					width="1553"
 					height="873"
 					src="/assets/at-work.jpg"
-					alt="Jeanine White at work with a colleague"
+					alt="Sai Deepa Kadaru at work"
 				/>
 			</Hero>
 
@@ -23,35 +85,127 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 				<h2 class="section-title">Background</h2>
 				<div class="content">
 					<p>
-						Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy. Sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla
-						pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+						I'm a software developer and AI engineer currently completing my MS in Computer Science
+						at Ohio University (graduating December 2026), where I research neuromorphic computing
+						and spiking neural networks under Dr. Chang Liu. My thesis —
+						<em>Deep Spiking Q-Networks for Turn-Based Game Environments</em> — explores
+						energy-efficient alternatives to traditional deep RL using biologically inspired hardware.
 					</p>
 					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis
-						natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel
-						quam elementum pulvinar etiam non.
+						On the engineering side, I build production-grade AI systems: RAG pipelines,
+						multi-agent orchestrators, LLM monitoring stacks, and backend APIs that actually ship.
+						I care deeply about reliability, clarity, and systems that non-technical collaborators
+						can operate without hand-holding.
 					</p>
 					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet
-						eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
-						Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl
-						pretium fusce.
+						Outside of work, I'm passionate about the intersection of algorithm design and
+						energy-efficient computing — and I believe the next frontier of AI isn't just about
+						smarter models, but leaner ones.
 					</p>
 				</div>
 			</section>
+
 			<section>
 				<h2 class="section-title">Education</h2>
 				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
+					<div class="edu-entry">
+						<div class="edu-header">
+							<strong>Ohio University</strong>&nbsp;· Athens, OH
+							<span class="edu-dates">Aug 2023 – Dec 2026</span>
+						</div>
+						<p class="edu-degree">Master of Science, Computer Science &nbsp;·&nbsp; GPA: 3.7 / 4.0</p>
+						<ul>
+							<li>Thesis: <em>Deep Spiking Q-Networks for Turn-Based Game Environments: Encoding Choices and Energy Trade-offs</em></li>
+							<li>Advisor: Dr. Chang Liu, School of EECS</li>
+							<li>3 publications (2 peer-reviewed, 1 under review)</li>
+							<li>Coursework: Data Mining, Medical Image Analysis, Advanced Data Science, Information Theory</li>
+						</ul>
+					</div>
+					<div class="edu-entry">
+						<div class="edu-header">
+							<strong>Osmania University</strong>&nbsp;· Hyderabad, India
+							<span class="edu-dates">Aug 2019 – Jul 2023</span>
+						</div>
+						<p class="edu-degree">Bachelor of Engineering, Computer Science</p>
+						<ul>
+							<li>Undergraduate Project: Automated web application for resume generation</li>
+							<li>Coursework: DSA, Computer Organization & Architecture, Programming Languages, Operating Systems</li>
+						</ul>
+					</div>
 				</div>
 			</section>
+
+			<section>
+				<h2 class="section-title">Experience</h2>
+				<div class="content">
+					<div class="edu-entry">
+						<div class="edu-header">
+							<strong>Graduate Research Assistant</strong>&nbsp;· Ohio University
+							<span class="edu-dates">Aug 2023 – Aug 2026</span>
+						</div>
+						<ul>
+							<li>Designed & deployed end-to-end AI systems using LLMs, RAG pipelines, and agent frameworks on AWS, translating high-level research designs into working production components.</li>
+							<li>Built and integrated AI systems with existing data infrastructure via REST APIs and microservices, navigating real-world auth flows and distributed environments.</li>
+							<li>Debugged and optimized production AI pipelines, identifying failure modes and tuning retrieval and inference components for reliability under real operating conditions.</li>
+							<li>Wrote modular, reusable Python code across LLM integration, vector search, and agent orchestration layers with clear documentation.</li>
+						</ul>
+					</div>
+					<div class="edu-entry">
+						<div class="edu-header">
+							<strong>Programmer Analyst Intern</strong>&nbsp;· Cognizant
+							<span class="edu-dates">Feb 2023 – Jul 2023</span>
+						</div>
+						<ul>
+							<li>Automated backend QA workflows using Selenium and Java for enterprise clients, delivering production-ready automation that reduced manual testing effort measurably.</li>
+							<li>Documented testing methodologies, failure patterns, and resolution strategies for both client and internal teams.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
 			<section>
 				<h2 class="section-title">Skills</h2>
 				<div class="content">
-					<p>officia unde omnis</p>
+					<div class="skills-grid">
+						{skills.map((group) => (
+							<div class="skill-group">
+								<h3 class="skill-group-title">{group.group}</h3>
+								<ul>
+									{group.items.map((item) => <li>{item}</li>)}
+								</ul>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h2 class="section-title">Publications</h2>
+				<div class="content">
+					{publications.map((pub) => (
+						<div class="pub-entry">
+							<p class="pub-venue">{pub.venue}</p>
+							{pub.href ? (
+								<a href={pub.href} target="_blank" rel="noopener noreferrer" class="pub-title pub-link">
+									{pub.title}
+								</a>
+							) : (
+								<p class="pub-title pub-review">{pub.title}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
+
+			<section>
+				<h2 class="section-title">Contact</h2>
+				<div class="content">
+					<div class="contact-links">
+						<a href="https://github.com/saideepa05" target="_blank" rel="noopener noreferrer">GitHub</a>
+						<a href="https://www.linkedin.com/in/sai-deepa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+						<a href="mailto:saideepa0501@gmail.com">saideepa0501@gmail.com</a>
+						<span>(740) 813-3421</span>
+					</div>
 				</div>
 			</section>
 		</main>
@@ -90,15 +244,143 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		grid-column: 2 / 4;
 	}
 
-	.content :global(a) {
+	.content a {
 		text-decoration: 1px solid underline transparent;
 		text-underline-offset: 0.25em;
 		transition: text-decoration-color var(--theme-transition);
+		color: var(--accent-regular);
 	}
 
-	.content :global(a:hover),
-	.content :global(a:focus) {
+	.content a:hover {
 		text-decoration-color: currentColor;
+	}
+
+	p {
+		margin: 0 0 1rem;
+	}
+
+	/* Education & Experience */
+	.edu-entry {
+		margin-bottom: 1.75rem;
+	}
+
+	.edu-entry:last-child {
+		margin-bottom: 0;
+	}
+
+	.edu-header {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.5rem;
+		align-items: baseline;
+		color: var(--gray-0);
+		font-size: var(--text-md);
+		margin-bottom: 0.25rem;
+	}
+
+	.edu-dates {
+		margin-left: auto;
+		font-size: var(--text-sm);
+		color: var(--gray-400);
+		white-space: nowrap;
+	}
+
+	.edu-degree {
+		margin: 0 0 0.4rem;
+		color: var(--gray-300);
+		font-size: var(--text-sm);
+	}
+
+	.edu-entry ul {
+		margin: 0.25rem 0 0 1.1rem;
+		padding: 0;
+		color: var(--gray-300);
+		font-size: var(--text-sm);
+		line-height: 1.7;
+	}
+
+	/* Skills */
+	.skills-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+
+	.skill-group {
+		background: var(--gradient-subtle);
+		border: 1px solid var(--gray-800);
+		border-radius: 1rem;
+		padding: 1.1rem 1.25rem;
+	}
+
+	.skill-group-title {
+		font-size: 0.7rem;
+		font-weight: 700;
+		color: var(--accent-regular);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin: 0 0 0.6rem;
+	}
+
+	.skill-group ul {
+		margin: 0;
+		padding: 0 0 0 1rem;
+		color: var(--gray-300);
+		font-size: var(--text-sm);
+		line-height: 1.8;
+	}
+
+	/* Publications */
+	.pub-entry {
+		margin-bottom: 1.25rem;
+	}
+
+	.pub-entry:last-child {
+		margin-bottom: 0;
+	}
+
+	.pub-venue {
+		font-size: 0.7rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--accent-regular);
+		margin: 0 0 0.15rem;
+	}
+
+	.pub-title {
+		font-size: var(--text-md);
+		line-height: 1.4;
+		margin: 0;
+		color: var(--gray-200);
+	}
+
+	.pub-link {
+		display: block;
+		color: var(--gray-200) !important;
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition), color var(--theme-transition);
+	}
+
+	.pub-link:hover {
+		text-decoration-color: currentColor !important;
+		color: var(--accent-regular) !important;
+	}
+
+	.pub-review {
+		color: var(--gray-400);
+		font-style: italic;
+	}
+
+	/* Contact */
+	.contact-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.25rem;
+		align-items: center;
+		font-size: var(--text-md);
+		color: var(--gray-300);
 	}
 
 	@media (min-width: 50em) {
@@ -114,6 +396,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		section {
 			display: contents;
 			font-size: var(--text-lg);
+		}
+	}
+
+	@media (max-width: 49.9em) {
+		.skills-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.edu-dates {
+			margin-left: 0;
+			width: 100%;
 		}
 	}
 </style>
