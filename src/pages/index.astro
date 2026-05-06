@@ -108,22 +108,16 @@ const publications = [
 					<h2 class="about-section-title">Background</h2>
 					<div class="about-content">
 						<p>
-							I'm a software developer and AI engineer currently completing my MS in Computer Science
-							at Ohio University (graduating December 2026), where I research neuromorphic computing
-							and spiking neural networks under Dr. Chang Liu. My thesis —
-							<em>Deep Spiking Q-Networks for Turn-Based Game Environments</em> — explores
-							energy-efficient alternatives to traditional deep RL using biologically inspired hardware.
+							I recently completed my MS in Computer Science at Ohio University, where my thesis focuses
+							on neuromorphic computing and spiking neural networks with the intersection of reinforcement
+							learning, where I explore energy-efficient alternatives to traditional deep RL using
+							biologically inspired hardware.
 						</p>
 						<p>
 							On the engineering side, I build production-grade AI systems: RAG pipelines,
 							multi-agent orchestrators, LLM monitoring stacks, and backend APIs that actually ship.
 							I care deeply about reliability, clarity, and systems that non-technical collaborators
 							can operate without hand-holding.
-						</p>
-						<p>
-							Outside of work, I'm passionate about the intersection of algorithm design and
-							energy-efficient computing — and I believe the next frontier of AI isn't just about
-							smarter models, but leaner ones.
 						</p>
 					</div>
 				</section>
@@ -137,12 +131,9 @@ const publications = [
 								<span class="edu-dates">Aug 2023 – Dec 2026</span>
 							</div>
 							<p class="edu-degree">Master of Science, Computer Science &nbsp;·&nbsp; GPA: 3.7 / 4.0</p>
-							<ul>
-								<li>Thesis: <em>Deep Spiking Q-Networks for Turn-Based Game Environments: Encoding Choices and Energy Trade-offs</em></li>
-								<li>Advisor: Dr. Chang Liu, School of EECS</li>
-								<li>3 publications (2 peer-reviewed, 1 under review)</li>
-								<li>Coursework: Data Mining, Medical Image Analysis, Advanced Data Science, Information Theory</li>
-							</ul>
+							<p class="edu-detail">Thesis: <em>Deep Spiking Q-Networks for Turn-Based Game Environments: Encoding Choices and Energy Trade-offs</em></p>
+							<p class="edu-detail">Advisor: Dr. Chang Liu, School of EECS &nbsp;·&nbsp; 3 publications (2 peer-reviewed, 1 under review)</p>
+							<p class="edu-detail">Coursework: Data Mining, Medical Image Analysis, Advanced Data Science, Information Theory</p>
 						</div>
 						<div class="edu-entry">
 							<div class="edu-header">
@@ -150,10 +141,8 @@ const publications = [
 								<span class="edu-dates">Aug 2019 – Jul 2023</span>
 							</div>
 							<p class="edu-degree">Bachelor of Engineering, Computer Science</p>
-							<ul>
-								<li>Undergraduate Project: Automated web application for resume generation</li>
-								<li>Coursework: DSA, Computer Organization &amp; Architecture, Programming Languages, Operating Systems</li>
-							</ul>
+							<p class="edu-detail">Undergraduate Project: Automated web application for resume generation</p>
+							<p class="edu-detail">Coursework: DSA, Computer Organization &amp; Architecture, Programming Languages, Operating Systems</p>
 						</div>
 					</div>
 				</section>
@@ -398,13 +387,11 @@ const publications = [
 		gap: 0.25rem 0.5rem;
 		align-items: baseline;
 		color: var(--gray-0);
-		font-size: var(--text-md);
 		margin-bottom: 0.25rem;
 	}
 
 	.edu-dates {
 		margin-left: auto;
-		font-size: var(--text-sm);
 		color: var(--gray-400);
 		white-space: nowrap;
 	}
@@ -412,14 +399,18 @@ const publications = [
 	.edu-degree {
 		margin: 0 0 0.4rem;
 		color: var(--gray-300);
-		font-size: var(--text-sm);
+	}
+
+	.edu-detail {
+		margin: 0 0 0.3rem;
+		color: var(--gray-300);
+		line-height: 1.6;
 	}
 
 	.edu-entry ul {
 		margin: 0.25rem 0 0 1.1rem;
 		padding: 0;
 		color: var(--gray-300);
-		font-size: var(--text-sm);
 		line-height: 1.7;
 	}
 
