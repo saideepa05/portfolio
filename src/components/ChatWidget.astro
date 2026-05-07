@@ -3,12 +3,43 @@
 ---
 
 <div id="chat-widget">
-	<!-- Floating toggle button -->
-	<button class="chat-fab" id="chatFab" aria-label="Chat with Sai's AI assistant">
-		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-			<path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
-		</svg>
-	</button>
+	<!-- Floating robot launcher card -->
+	<div class="chat-launcher" id="chatFab" role="button" tabindex="0" aria-label="Chat with Sai's AI assistant">
+		<div class="robot-body">
+			<svg viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="robot-svg" aria-hidden="true">
+				<!-- antenna -->
+				<line x1="40" y1="18" x2="40" y2="6" stroke="#e0e8ff" stroke-width="3" stroke-linecap="round"/>
+				<circle cx="40" cy="4" r="4" fill="#7eb8ff"/>
+				<!-- head -->
+				<rect x="14" y="18" width="52" height="36" rx="10" fill="#dce9ff"/>
+				<!-- eye sockets -->
+				<rect x="20" y="28" width="16" height="16" rx="5" fill="#2255cc"/>
+				<rect x="44" y="28" width="16" height="16" rx="5" fill="#2255cc"/>
+				<!-- eye shine -->
+				<circle cx="26" cy="33" r="4" fill="#7eb8ff"/>
+				<circle cx="50" cy="33" r="4" fill="#7eb8ff"/>
+				<circle cx="28" cy="31" r="1.5" fill="white"/>
+				<circle cx="52" cy="31" r="1.5" fill="white"/>
+				<!-- mouth -->
+				<rect x="28" y="47" width="24" height="4" rx="2" fill="#aac4ff"/>
+				<!-- neck -->
+				<rect x="34" y="54" width="12" height="6" rx="2" fill="#c5d8ff"/>
+				<!-- body -->
+				<rect x="10" y="60" width="60" height="34" rx="10" fill="#dce9ff"/>
+				<!-- chest panel -->
+				<rect x="24" y="68" width="32" height="18" rx="5" fill="#aac4ff" opacity="0.6"/>
+				<circle cx="35" cy="77" r="3" fill="#2255cc"/>
+				<circle cx="45" cy="77" r="3" fill="#7eb8ff"/>
+				<!-- left arm (waving) -->
+				<path d="M10 66 Q0 60 2 50" stroke="#dce9ff" stroke-width="8" stroke-linecap="round" fill="none"/>
+				<circle cx="2" cy="48" r="5" fill="#c5d8ff"/>
+				<!-- right arm -->
+				<path d="M70 66 Q80 72 78 80" stroke="#dce9ff" stroke-width="8" stroke-linecap="round" fill="none"/>
+				<circle cx="78" cy="82" r="5" fill="#c5d8ff"/>
+			</svg>
+		</div>
+		<button class="start-chat-btn">Start chat</button>
+	</div>
 
 	<!-- Chat panel -->
 	<div class="chat-panel" id="chatPanel" aria-hidden="true" role="dialog" aria-label="AI assistant chat">
@@ -61,31 +92,78 @@
 		font-family: var(--font-body);
 	}
 
-	/* ── Toggle button ── */
-	.chat-fab {
-		width: 3.25rem;
-		height: 3.25rem;
-		border-radius: 50%;
-		background: var(--accent-regular);
-		color: var(--accent-text-over);
-		border: none;
+	/* ── Robot launcher card ── */
+	.chat-launcher {
 		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0;
+		width: 100px;
+		background: #0d0d1f;
+		border-radius: 1.25rem;
+		padding: 0.875rem 0.75rem 0.75rem;
+		position: relative;
+		transition: transform 0.2s ease;
+		/* gradient border via box-shadow */
+		box-shadow:
+			0 0 0 2px transparent,
+			0 0 0 2.5px rgba(160, 80, 220, 0.8),
+			0 0 16px rgba(200, 80, 180, 0.4),
+			0 4px 24px rgba(0, 0, 0, 0.5);
+		background-clip: padding-box;
+	}
+
+	.chat-launcher::before {
+		content: '';
+		position: absolute;
+		inset: -2px;
+		border-radius: 1.35rem;
+		background: linear-gradient(135deg, #c850c0, #7c3aed, #4f8ef7);
+		z-index: -1;
+	}
+
+	.chat-launcher:hover {
+		transform: translateY(-3px);
+	}
+
+	.robot-body {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-		transition: transform 0.2s ease, box-shadow 0.2s ease;
+		width: 70px;
+		height: 80px;
 	}
 
-	.chat-fab:hover {
-		transform: scale(1.08);
-		box-shadow: 0 6px 28px rgba(0, 0, 0, 0.5);
+	.robot-svg {
+		width: 70px;
+		height: 80px;
+		filter: drop-shadow(0 2px 8px rgba(126, 184, 255, 0.35));
+	}
+
+	.start-chat-btn {
+		margin-top: 0.5rem;
+		background: white;
+		color: #1a1a2e;
+		border: none;
+		border-radius: 2rem;
+		padding: 0.35rem 1rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		cursor: pointer;
+		width: 100%;
+		transition: background 0.15s;
+		font-family: var(--font-body);
+	}
+
+	.start-chat-btn:hover {
+		background: #eef2ff;
 	}
 
 	/* ── Panel ── */
 	.chat-panel {
 		position: absolute;
-		bottom: 4rem;
+		bottom: calc(100% + 0.75rem);
 		right: 0;
 		width: 340px;
 		height: 480px;
@@ -387,6 +465,7 @@
 	}
 
 	fab.addEventListener('click', togglePanel);
+	fab.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePanel(); } });
 	closeBtn.addEventListener('click', togglePanel);
 	sendBtn.addEventListener('click', sendMessage);
 	input.addEventListener('keydown', (e) => {
