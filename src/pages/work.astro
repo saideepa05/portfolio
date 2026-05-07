@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import ContactCTA from '../components/ContactCTA.astro';
-import Grid from '../components/Grid.astro';
 import Hero from '../components/Hero.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -12,7 +11,7 @@ const projects = (await getCollection('work')).sort(
 ---
 
 <BaseLayout
-	title="Work | Sai Deepa Kadaru"
+	title="Projects | Sai Deepa Kadaru"
 	description="Production AI systems, research projects, and published work by Sai Deepa Kadaru."
 >
 	<div class="stack gap-20">
@@ -22,16 +21,29 @@ const projects = (await getCollection('work')).sort(
 				tagline="Production AI systems, research projects, and published work. Each project was built to solve a real problem — not just to exist."
 				align="start"
 			/>
-			<Grid variant="offset">
+			<div class="projects-grid">
 				{
 					projects.map((project) => (
-						<li>
-							<PortfolioPreview project={project} />
-						</li>
+						<PortfolioPreview project={project} />
 					))
 				}
-			</Grid>
+			</div>
 		</main>
 		<ContactCTA />
 	</div>
+
+<style>
+	.projects-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 50em) {
+		.projects-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
+		}
+	}
+</style>
 </BaseLayout>
