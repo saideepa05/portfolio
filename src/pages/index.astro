@@ -16,7 +16,6 @@ const recentPosts = (await getCollection('blog'))
 const skills = [
 	{
 		group: 'AI Systems & Frameworks',
-		color: '#7c3aed',
 		items: [
 			'LLMs, RAG Pipelines, Agentic AI',
 			'Multi-Agent Systems',
@@ -28,7 +27,6 @@ const skills = [
 	},
 	{
 		group: 'Neuromorphic & RL Research',
-		color: '#2563eb',
 		items: [
 			'Reinforcement Learning',
 			'Spiking Neural Networks (snnTorch, PyTorch)',
@@ -40,7 +38,6 @@ const skills = [
 	},
 	{
 		group: 'Engineering & Deployment',
-		color: '#0d9488',
 		items: [
 			'Python, Java, SQL, C++',
 			'FastAPI, REST APIs, Spring Boot',
@@ -173,7 +170,7 @@ const publications = [
 									<h3 class="skill-group-title">{group.group}</h3>
 									<div class="skill-pills">
 										{group.items.map((item) => (
-											<span class="skill-pill" style={{ backgroundColor: group.color }}>{item}</span>
+											<span class="skill-pill">{item}</span>
 										))}
 									</div>
 								</div>
@@ -435,7 +432,8 @@ const publications = [
 		align-items: center;
 		padding: 0.55rem 1.4rem;
 		border-radius: 999rem;
-		color: #fff;
+		background-color: var(--accent-regular);
+		color: var(--accent-text-over);
 		font-size: var(--text-md);
 		font-weight: 500;
 		line-height: 1.2;
