@@ -257,32 +257,28 @@
 	.chat-messages::-webkit-scrollbar-track { background: transparent; }
 	.chat-messages::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.3); border-radius: 2px; }
 
-	/* ── Message rows — row-based layout for reliable LR alignment ── */
-
-	/* Each row is a full-width flex container */
-	.msg-row {
+	/* ── Message rows — :global because these are created dynamically via JS ── */
+	:global(.msg-row) {
 		display: flex;
 		width: 100%;
 		gap: 0.5rem;
 	}
 
-	/* USER row: push everything to the right */
-	.msg-row.user {
+	:global(.msg-row.user) {
 		flex-direction: row-reverse;
 		justify-content: flex-start;
 	}
 
-	/* BOT row: avatar + bubble on the left */
-	.msg-row.bot {
+	:global(.msg-row.bot) {
 		flex-direction: row;
 		justify-content: flex-start;
 		align-items: flex-end;
 	}
 
-	/* Bot mini avatar */
-	.msg-avatar {
+	:global(.msg-avatar) {
 		width: 1.75rem;
 		height: 1.75rem;
+		min-width: 1.75rem;
 		border-radius: 50%;
 		background: linear-gradient(135deg, #a855f7, #7c3aed);
 		color: white;
@@ -295,40 +291,35 @@
 		letter-spacing: 0.02em;
 	}
 
-	/* Bubble + label wrapper */
-	.msg-content {
+	:global(.msg-content) {
 		display: flex;
 		flex-direction: column;
-		gap: 0.18rem;
 		max-width: 75%;
 	}
 
-	.msg-row.user .msg-content {
+	:global(.msg-row.user .msg-content) {
 		align-items: flex-end;
 	}
 
-	.msg-row.bot .msg-content {
+	:global(.msg-row.bot .msg-content) {
 		align-items: flex-start;
 	}
 
-	/* The actual chat bubble */
-	.msg-bubble {
+	:global(.msg-bubble) {
 		padding: 0.55rem 0.875rem;
 		font-size: 0.84rem;
 		line-height: 1.55;
 		word-break: break-word;
 	}
 
-	/* USER bubble — purple, right corner clipped */
-	.msg-row.user .msg-bubble {
+	:global(.msg-row.user .msg-bubble) {
 		background: linear-gradient(135deg, #7c3aed, #6d28d9);
 		color: #f5f0ff;
 		border-radius: 1.1rem 1.1rem 0.2rem 1.1rem;
 		box-shadow: 0 3px 14px rgba(109,40,217,0.4);
 	}
 
-	/* BOT bubble — dark card, left corner clipped */
-	.msg-row.bot .msg-bubble {
+	:global(.msg-row.bot .msg-bubble) {
 		background: #1c1530;
 		color: #ccc4e8;
 		border: 1px solid rgba(139,92,246,0.15);
@@ -336,8 +327,7 @@
 		box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 	}
 
-	/* ── Typing indicator ── */
-	.typing-bubble {
+	:global(.typing-bubble) {
 		display: flex;
 		gap: 0.3rem;
 		align-items: center;
@@ -347,7 +337,7 @@
 		border-radius: 1.1rem 1.1rem 1.1rem 0.2rem;
 	}
 
-	.typing-dot {
+	:global(.typing-dot) {
 		width: 5px;
 		height: 5px;
 		border-radius: 50%;
@@ -355,8 +345,8 @@
 		animation: dot-bounce 1.2s infinite;
 	}
 
-	.typing-dot:nth-child(2) { animation-delay: 0.2s; }
-	.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+	:global(.typing-dot:nth-child(2)) { animation-delay: 0.2s; }
+	:global(.typing-dot:nth-child(3)) { animation-delay: 0.4s; }
 
 	@keyframes dot-bounce {
 		0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
