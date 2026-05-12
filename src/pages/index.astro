@@ -90,16 +90,6 @@ const publications = [
 							<Pill><Icon icon="trophy" size="1.33em" /> Published Author</Pill>
 						</div>
 					</Hero>
-					<div class="hero-socials">
-						<a href="https://github.com/saideepa05" target="_blank" rel="noopener noreferrer" class="hero-social">
-							<Icon icon="github-logo" size="1.5em" />
-							<span class="sr-only">GitHub</span>
-						</a>
-						<a href="https://www.linkedin.com/in/sai-deepa/" target="_blank" rel="noopener noreferrer" class="hero-social">
-							<Icon icon="linkedin-logo" size="1.5em" />
-							<span class="sr-only">LinkedIn</span>
-						</a>
-					</div>
 				</div>
 			</header>
 		</div>
@@ -305,26 +295,7 @@ const publications = [
 		height: 160px;
 	}
 
-	.hero-socials {
-		display: flex;
-		gap: 0.75rem;
-		margin-top: 0.25rem;
-	}
-
-	.hero-social {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: var(--accent-dark);
-		text-decoration: none;
-		transition: color var(--theme-transition);
-	}
-
-	.hero-social:hover {
-		color: var(--accent-regular);
-	}
-
-	@media (min-width: 50em) {
+@media (min-width: 50em) {
 		.hero {
 			display: grid;
 			grid-template-columns: auto 1fr;
