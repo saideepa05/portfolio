@@ -9,13 +9,15 @@ const { data, id } = Astro.props.project;
 ---
 
 <a class="card" href={`/work/${id}`}>
-	<span class="title">{data.title}</span>
+	{data.tags?.[0] && <p class="card-tag">{data.tags[0]}</p>}
+	<p class="card-title">{data.title}</p>
 </a>
 
 <style>
 	.card {
 		display: flex;
-		align-items: flex-start;
+		flex-direction: column;
+		gap: 0.4rem;
 		padding: 1.25rem 1.5rem;
 		background: var(--gradient-subtle);
 		border: 1px solid var(--gray-800);
@@ -24,30 +26,36 @@ const { data, id } = Astro.props.project;
 		box-shadow: var(--shadow-sm);
 		text-decoration: none;
 		font-family: var(--font-brand);
-		font-weight: 600;
-		transition: box-shadow var(--theme-transition), transform 0.2s ease;
+		transition: box-shadow var(--theme-transition), background-color var(--theme-transition);
 	}
 
 	.card:hover {
 		box-shadow: var(--shadow-md);
-		transform: translateY(-2px);
+		background-color: var(--accent-subtle-overlay);
 	}
 
-	.title {
+	.card-tag {
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--accent-regular);
+		margin: 0;
+	}
+
+	.card-title {
 		font-size: var(--text-md);
+		font-weight: 600;
 		color: var(--gray-200);
-		line-height: 1.4;
+		line-height: 1.5;
+		margin: 0;
 	}
 
 	@media (min-width: 50em) {
 		.card {
 			border-radius: 1.5rem;
-			padding: 1.5rem 1.75rem;
-			min-height: 8rem;
-		}
-
-		.title {
-			font-size: var(--text-lg);
+			padding: 1.25rem 1.5rem;
+			min-height: 7rem;
 		}
 	}
 </style>
