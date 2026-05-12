@@ -311,18 +311,6 @@
 		align-items: flex-start;
 	}
 
-	/* Tiny sender name */
-	.msg-sender {
-		font-size: 0.62rem;
-		font-weight: 600;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-		padding: 0 0.25rem;
-	}
-
-	.msg-row.user .msg-sender { color: #a78bfa; }
-	.msg-row.bot  .msg-sender { color: #6b7280; }
-
 	/* The actual chat bubble */
 	.msg-bubble {
 		padding: 0.55rem 0.875rem;
@@ -481,13 +469,11 @@
 			row.innerHTML = `
 				<div class="msg-avatar">AI</div>
 				<div class="msg-content">
-					<span class="msg-sender">Sai's AI</span>
 					<div class="msg-bubble">${escapeHtml(text)}</div>
 				</div>`;
 		} else {
 			row.innerHTML = `
 				<div class="msg-content">
-					<span class="msg-sender">You</span>
 					<div class="msg-bubble">${escapeHtml(text)}</div>
 				</div>`;
 		}
@@ -506,7 +492,6 @@
 		row.innerHTML = `
 			<div class="msg-avatar">AI</div>
 			<div class="msg-content">
-				<span class="msg-sender">Sai's AI</span>
 				<div class="typing-bubble">
 					<span class="typing-dot"></span>
 					<span class="typing-dot"></span>
