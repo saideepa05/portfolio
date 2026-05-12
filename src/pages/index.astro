@@ -256,7 +256,9 @@ const publications = [
 
 		</main>
 
-		<ContactCTA />
+		<div class="cta-wrapper">
+			<ContactCTA />
+		</div>
 	</div>
 </BaseLayout>
 
@@ -315,23 +317,23 @@ const publications = [
 	.about-wrapper {
 		display: flex;
 		flex-direction: column;
-		gap: 3.5rem;
+		gap: 1.5rem;
 		color: var(--gray-200);
 	}
 
 	.about-section {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: 0.3rem;
 	}
 
 	.about-section-title {
-		font-size: var(--text-xl);
+		font-size: var(--text-md);
 		color: var(--gray-0);
 	}
 
 	.about-content p {
-		margin: 0 0 1rem;
+		margin: 0 0 0.4rem;
 	}
 
 	.about-content a {
@@ -350,12 +352,12 @@ const publications = [
 			display: grid;
 			grid-template-columns: 1fr 60% 1fr;
 			align-items: start;
-			font-size: var(--text-lg);
+			font-size: 0.8rem;
 		}
 
 		.about-section-title {
 			grid-column: 1;
-			padding-top: 0.2rem;
+			padding-top: 0.15rem;
 		}
 
 		.about-content {
@@ -365,7 +367,7 @@ const publications = [
 
 	/* Education & Experience */
 	.edu-entry {
-		margin-bottom: 1.75rem;
+		margin-bottom: 0.75rem;
 	}
 
 	.edu-entry:last-child {
@@ -399,10 +401,10 @@ const publications = [
 	}
 
 	.edu-entry ul {
-		margin: 0.25rem 0 0 1.1rem;
+		margin: 0.2rem 0 0 1rem;
 		padding: 0;
 		color: var(--gray-300);
-		line-height: 1.7;
+		line-height: 1.5;
 	}
 
 	/* Skills */
@@ -465,6 +467,13 @@ const publications = [
 			margin-left: 0;
 			width: 100%;
 		}
+	}
+
+	/* ====================================================== */
+	/* CTA wrapper — pulls the CTA closer to the last section */
+
+	.cta-wrapper {
+		margin-top: -3rem;
 	}
 
 	/* ====================================================== */
