@@ -226,17 +226,18 @@ const publications = [
 				</section>
 			</div>
 
-			<section class="section with-background blog-section">
+			<section class="section section-split with-background blog-section">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Blog Posts</h3>
 					<p>Thoughts on AI engineering, neuromorphic computing, and building things that work in production.</p>
 				</header>
 
-				<div class="gallery centered-cta">
-					<CallToAction href="/blog/">
-						All Posts
-						<Icon icon="arrow-right" size="1.2em" />
-					</CallToAction>
+				<div class="gallery">
+					<div class="blog-grid">
+						{recentPosts.map((post) => (
+							<BlogPreview post={post} />
+						))}
+					</div>
 				</div>
 			</section>
 
@@ -644,20 +645,16 @@ const publications = [
 	/* ====================================================== */
 	/* Blog section */
 
-	.blog-gallery {
+	.blog-grid {
 		display: grid;
 		gap: 1rem;
-		grid-column: 1 / -1;
+		grid-template-columns: 1fr;
 	}
 
 	@media (min-width: 50em) {
-		.blog-gallery {
+		.blog-grid {
 			grid-template-columns: repeat(3, 1fr);
 			gap: 1.5rem;
-		}
-
-		.blog-section {
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
 		}
 	}
 </style>
