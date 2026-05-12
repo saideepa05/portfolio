@@ -7,11 +7,16 @@ import Grid from '../components/Grid.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
 import Pill from '../components/Pill.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const recentPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.slice(0, 3);
+
+const projects = (await getCollection('work')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
 
 const skills = [
 	{
@@ -186,11 +191,12 @@ const publications = [
 					<p>Production AI systems, research projects, and published work — each built to solve a real problem.</p>
 				</header>
 
-				<div class="gallery centered-cta">
-					<CallToAction href="/work/">
-						View All
-						<Icon icon="arrow-right" size="1.2em" />
-					</CallToAction>
+				<div class="gallery">
+					<div class="projects-grid">
+						{projects.map((project) => (
+							<PortfolioPreview project={project} />
+						))}
+					</div>
 				</div>
 			</section>
 
@@ -537,6 +543,22 @@ const publications = [
 			display: flex;
 			justify-content: center;
 			align-items: center;
+		}
+	}
+
+	/* ====================================================== */
+	/* Projects grid */
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.5rem;
+		width: 100%;
+	}
+
+	@media (min-width: 50em) {
+		.projects-grid {
+			grid-template-columns: repeat(4, 1fr);
 		}
 	}
 
