@@ -99,6 +99,52 @@ const publications = [
 
 		<main class="wrapper stack gap-20 lg:gap-28">
 
+			<section class="section with-background">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>My Projects</h3>
+					<p>Production AI systems, research projects, and published work — each built to solve a real problem.</p>
+				</header>
+
+				<div class="gallery">
+					<div class="projects-grid">
+						{projects.map((project) => (
+							<PortfolioPreview project={project} />
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section class="section with-background bg-variant">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Publications</h3>
+					<p>
+						Peer-reviewed research in neuromorphic computing, reinforcement learning, and LLM-based game solvers.
+					</p>
+				</header>
+
+				<div class="gallery">
+					<Grid variant="small">
+						{
+							publications.map((pub) => (
+								<li class="mention-card">
+									{pub.href ? (
+										<a href={pub.href} target="_blank" rel="noopener noreferrer" class="pub-link">
+											<p class="pub-venue">{pub.venue}</p>
+											<p class="pub-title">{pub.title}</p>
+										</a>
+									) : (
+										<div class="pub-link">
+											<p class="pub-venue">{pub.venue}</p>
+											<p class="pub-title">{pub.title}</p>
+										</div>
+									)}
+								</li>
+							))
+						}
+					</Grid>
+				</div>
+			</section>
+
 			<div class="about-wrapper">
 				<section class="about-section">
 					<h2 class="about-section-title">Background</h2>
@@ -184,52 +230,6 @@ const publications = [
 					</div>
 				</section>
 			</div>
-
-			<section class="section with-background">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>My Projects</h3>
-					<p>Production AI systems, research projects, and published work — each built to solve a real problem.</p>
-				</header>
-
-				<div class="gallery">
-					<div class="projects-grid">
-						{projects.map((project) => (
-							<PortfolioPreview project={project} />
-						))}
-					</div>
-				</div>
-			</section>
-
-			<section class="section with-background bg-variant">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Publications</h3>
-					<p>
-						Peer-reviewed research in neuromorphic computing, reinforcement learning, and LLM-based game solvers.
-					</p>
-				</header>
-
-				<div class="gallery">
-					<Grid variant="small">
-						{
-							publications.map((pub) => (
-								<li class="mention-card">
-									{pub.href ? (
-										<a href={pub.href} target="_blank" rel="noopener noreferrer" class="pub-link">
-											<p class="pub-venue">{pub.venue}</p>
-											<p class="pub-title">{pub.title}</p>
-										</a>
-									) : (
-										<div class="pub-link">
-											<p class="pub-venue">{pub.venue}</p>
-											<p class="pub-title">{pub.title}</p>
-										</div>
-									)}
-								</li>
-							))
-						}
-					</Grid>
-				</div>
-			</section>
 
 			<section class="section with-background blog-section">
 				<header class="section-header stack gap-2 lg:gap-4">
