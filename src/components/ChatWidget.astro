@@ -490,23 +490,34 @@
 			.replace(/\n/g, '<br>');
 	}
 
+	const S = {
+		rowUser:   'display:flex;width:100%;flex-direction:row-reverse;margin-bottom:0.25rem;',
+		rowBot:    'display:flex;width:100%;flex-direction:row;align-items:flex-end;gap:0.5rem;margin-bottom:0.25rem;',
+		avatar:    'width:1.75rem;height:1.75rem;min-width:1.75rem;border-radius:50%;background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.55rem;font-weight:700;',
+		contentU:  'display:flex;flex-direction:column;align-items:flex-end;max-width:75%;',
+		contentB:  'display:flex;flex-direction:column;align-items:flex-start;max-width:75%;',
+		bubbleU:   'padding:0.55rem 0.9rem;font-size:0.84rem;line-height:1.55;word-break:break-word;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#f5f0ff;border-radius:1.1rem 1.1rem 0.25rem 1.1rem;box-shadow:0 3px 14px rgba(109,40,217,0.4);',
+		bubbleB:   'padding:0.55rem 0.9rem;font-size:0.84rem;line-height:1.55;word-break:break-word;background:#1c1530;color:#ccc4e8;border:1px solid rgba(139,92,246,0.18);border-radius:1.1rem 1.1rem 1.1rem 0.25rem;box-shadow:0 2px 8px rgba(0,0,0,0.3);',
+		typingWrap:'display:flex;gap:0.3rem;align-items:center;padding:0.65rem 0.9rem;background:#1c1530;border:1px solid rgba(139,92,246,0.18);border-radius:1.1rem 1.1rem 1.1rem 0.25rem;',
+		dot:       'width:5px;height:5px;border-radius:50%;background:#7c6fa0;display:inline-block;animation:chat-dot-bounce 1.2s infinite;',
+	};
+
 	function addMessage(role: 'user' | 'bot', text: string) {
 		const row = document.createElement('div');
-		row.className = `msg-row ${role}`;
-
-		if (role === 'bot') {
+		if (role === 'user') {
+			row.setAttribute('style', S.rowUser);
 			row.innerHTML = `
-				<div class="msg-avatar">AI</div>
-				<div class="msg-content">
-					<div class="msg-bubble">${escapeHtml(text)}</div>
+				<div style="${S.contentU}">
+					<div style="${S.bubbleU}">${escapeHtml(text)}</div>
 				</div>`;
 		} else {
+			row.setAttribute('style', S.rowBot);
 			row.innerHTML = `
-				<div class="msg-content">
-					<div class="msg-bubble">${escapeHtml(text)}</div>
+				<div style="${S.avatar}">AI</div>
+				<div style="${S.contentB}">
+					<div style="${S.bubbleB}">${escapeHtml(text)}</div>
 				</div>`;
 		}
-
 		msgsEl.appendChild(row);
 		msgsEl.scrollTop = msgsEl.scrollHeight;
 	}
@@ -516,15 +527,15 @@
 
 	function showTyping() {
 		const row = document.createElement('div');
-		row.className = 'msg-row bot';
 		row.id = 'typing-indicator';
+		row.setAttribute('style', S.rowBot);
 		row.innerHTML = `
-			<div class="msg-avatar">AI</div>
-			<div class="msg-content">
-				<div class="typing-bubble">
-					<span class="typing-dot"></span>
-					<span class="typing-dot"></span>
-					<span class="typing-dot"></span>
+			<div style="${S.avatar}">AI</div>
+			<div style="${S.contentB}">
+				<div style="${S.typingWrap}">
+					<span style="${S.dot}"></span>
+					<span style="${S.dot}animation-delay:0.2s;"></span>
+					<span style="${S.dot}animation-delay:0.4s;"></span>
 				</div>
 			</div>`;
 		msgsEl.appendChild(row);
