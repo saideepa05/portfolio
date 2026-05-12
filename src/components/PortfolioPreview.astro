@@ -17,8 +17,8 @@ const { data, id } = Astro.props.project;
 		display: flex;
 		align-items: flex-start;
 		padding: 1.25rem 1.5rem;
-		background: var(--accent-regular);
-		border: 1px solid rgba(255, 255, 255, 0.12);
+		background: var(--gradient-subtle);
+		border: 1px solid var(--gray-800);
 		border-radius: 1rem;
 		overflow: hidden;
 		box-shadow: var(--shadow-sm);
@@ -35,7 +35,7 @@ const { data, id } = Astro.props.project;
 
 	.title {
 		font-size: var(--text-md);
-		color: #ffffff;
+		color: var(--gray-200);
 		line-height: 1.4;
 	}
 
