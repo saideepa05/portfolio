@@ -26,8 +26,3 @@ A few themes I keep returning to:
 
 **Things I had to figure out the hard way.** Retrieval failures that only show up at scale. Agent handoff bugs that look like LLM hallucinations but aren't. Chunking strategies that work in demos and fall apart on real documents. I'll write these up as I encounter them.
 
-## Why Now
-
-I'm finishing my MS in December 2026. The thesis is in its final stretch. I've been accumulating notes, half-written explanations, and mental models that I keep re-deriving from scratch — and writing them down is both how I think and how I make them useful to someone other than me.
-
-So: hello, world. More soon.
